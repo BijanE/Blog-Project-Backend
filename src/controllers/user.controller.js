@@ -14,12 +14,14 @@ module.exports = {
       if (err) {
         console.log(err)
         return res.status(500).json({
-          success: 0,
-          massage: 'Connection Error'
+          isAuth: false,
+          massage: 'Connection Error',
+          error: err,
+          data: null
         })
       } else {
         return res.status(200).json({
-          success: 1,
+          isAuth: true,
           data: results
         })
       }
@@ -32,17 +34,21 @@ module.exports = {
       if (err) {
         console.log(err)
         return res.json({
-          success: 0,
-          massage: 'Cannot get user info'
+          isAuth: false,
+          massage: 'Cannot get user info',
+          error: err,
+          data: null
         })
       } else if (!results) {
         return res.json({
-          success: 0,
-          massage: 'Cannot found any records'
+          isAuth: false,
+          massage: 'Cannot found any records',
+          error: err,
+          data: null
         })
       } else {
         return res.json({
-          success: 1,
+          isAuth: true,
           data: results
         })
       }
@@ -58,12 +64,14 @@ module.exports = {
       if (err) {
         console.log(err)
         return res.json({
-          success: 0,
-          massage: 'Cannot update the user'
+          isAuth: false,
+          massage: 'Cannot update the user',
+          error: err,
+          data: null
         })
       } else {
         return res.json({
-          success: 1,
+          isAuth: true,
           message: 'user updated successfully'
         })
       }
@@ -77,17 +85,28 @@ module.exports = {
       if (err) {
         console.log(err)
         return res.json({
-          success: 0,
-          massage: 'Some Error Happened!'
+          isAuth: false,
+          isLoggedIn: false,
+          massage: 'Some Error Happened!',
+          error: err,
+          data: null
         })
       } else if (!results) {
         return res.json({
-          success: 0,
-          data: 'Invalid email or password'
+          isAuth: false,
+          isLoggedIn: false,
+          data: 'Invalid email or password',
+          error: err,
+          data: null
         })
       }
 
       const result = compareSync(body.user_password, results.user_password)
+
+      var today = new Date()
+      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+      var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
+      var dateTime = date + ' ' + time
 
       if (result) {
         results.user_password = undefined
@@ -95,14 +114,20 @@ module.exports = {
           expiresIn: '1h'
         })
         return res.json({
-          success: 1,
-          message: 'login is successfully',
+          isAuth: true,
+          isLoggedIn: true,
+          loginTime: dateTime,
+          userEmail: results.user_email,
+          userNameuserSurname: results.user_name + ' ' + results.user_surname,
           token: jsontoken
         })
       } else {
         return res.json({
-          success: 0,
-          data: 'Invalid email or password'
+          isAuth: false,
+          isLoggedIn: false,
+          data: 'Invalid email or password',
+          error: err,
+          data: null
         })
       }
     })
