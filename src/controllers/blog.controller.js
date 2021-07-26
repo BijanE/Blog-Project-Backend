@@ -14,7 +14,6 @@ module.exports = {
     const body = req.body
     create_blog(body, (err, results) => {
       if (err) {
-        console.log(err)
         return res.json({
           isAuth: false,
           massage: 'Cannot create a blog'

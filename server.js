@@ -45,6 +45,9 @@ const BlogRouter = require('./src/routes/blog.routes')
 // Navbar Rout
 const NavbarRouter = require('./src/routes/navbar.routes')
 
+// Searchbar Rout
+const SearchbarRouter = require('./src/routes/searchbar.routes')
+
 // using as middleware
 app.use('/api/user', UserRouter)
 
@@ -53,6 +56,8 @@ app.use('/api/contact', ContactRouter)
 app.use('/api/blog', BlogRouter)
 
 app.use('/api/navbar', NavbarRouter)
+
+app.use('/api/searchbar', SearchbarRouter)
 
 // listen for requests
 app.listen(PORT, () => {
