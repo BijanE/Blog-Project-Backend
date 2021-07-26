@@ -1,58 +1,59 @@
 const { create_contact, get_contact, delete_contact } = require('../models/contact.model')
-const { genSaltSync, hashSync, compareSync } = require('bcrypt')
-const { sign } = require('jsonwebtoken')
 
 module.exports = {
+  // For sending or creating contact with them
   create_contact: (req, res) => {
     const body = req.body
     create_contact(body, (err, results) => {
       if (err) {
-        console.log(err)
         return res.json({
-          success: 0,
-          massage: 'Cannot create a contact'
+          isAuth: false,
+          massage: 'Cannot create a contact massage'
         })
       } else {
         return res.json({
-          success: 1,
+          isAuth: true,
           data: results
         })
       }
     })
   },
+
+  // For getting the contact massages that has been sended
   get_contact: (req, res) => {
     get_contact((err, results) => {
       if (err) {
         return res.json({
-          success: 0,
-          massage: 'Cannot get contacts'
+          isAuth: false,
+          massage: 'Cannot get the contact massages'
         })
       } else if (!results) {
         return res.json({
-          success: 0,
-          massage: 'No contact found'
+          isAuth: false,
+          massage: 'No contact massages found'
         })
       } else {
         return res.json({
-          success: 1,
+          isAuth: true,
           data: results
         })
       }
     })
   },
+
+  // For deleting the contact massage with its id
   delete_contact: (req, res) => {
     const body = req.body
     delete_contact(body, (err, results) => {
       if (err) {
-        console.log(err)
         return res.json({
-          success: 0,
-          massage: 'Cannot delete a contact'
+          isAuth: false,
+          massage: 'Cannot delete a contact massage'
         })
       } else {
         return res.json({
-          success: 1,
-          massage: 'Contact deleted successfuly'
+          isAuth: true,
+          massage: 'Contact massage is deleted successfuly'
         })
       }
     })

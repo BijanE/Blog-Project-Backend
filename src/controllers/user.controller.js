@@ -12,10 +12,9 @@ module.exports = {
     body.user_password = hashSync(body.user_password, salt)
     create(body, (err, results) => {
       if (err) {
-        console.log(err)
         return res.status(500).json({
           isAuth: false,
-          massage: 'Connection Error',
+          massage: 'Connection Error Happened',
           error: err,
           data: null
         })
@@ -32,7 +31,6 @@ module.exports = {
   getusers: (req, res) => {
     getusers((err, results) => {
       if (err) {
-        console.log(err)
         return res.json({
           isAuth: false,
           massage: 'Cannot get user info',
@@ -62,7 +60,6 @@ module.exports = {
     body.user_password = hashSync(body.user_password, salt)
     updateUser(body, (err, results) => {
       if (err) {
-        console.log(err)
         return res.json({
           isAuth: false,
           massage: 'Cannot update the user',
@@ -83,7 +80,6 @@ module.exports = {
     const body = req.body
     getUserByUserEmail(body.user_email, (err, results) => {
       if (err) {
-        console.log(err)
         return res.json({
           isAuth: false,
           isLoggedIn: false,

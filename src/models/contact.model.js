@@ -1,6 +1,7 @@
 const dbConn = require('../../config/db.config')
 
 module.exports = {
+  // For create a contact massage
   create_contact: (data, callback) => {
     dbConn.query(
       'INSERT INTO contact (contact_name, contact_surname, contact_email, contact_date, contact_content) VALUES (?,?,?,?,?)',
@@ -20,8 +21,10 @@ module.exports = {
       }
     )
   },
+
+  // For get all the contact massages
   get_contact: (callback) => {
-    dbConn.query('SELECT * FROM contact', [], (error, results, fields) => {
+    dbConn.query('SELECT * FROM contact ORDER BY ASC', [], (error, results, fields) => {
       if (error) {
         return callback(error)
       } else {
@@ -29,6 +32,8 @@ module.exports = {
       }
     })
   },
+
+  // For delete the contact massage with contact id
   delete_contact: (data, callback) => {
     dbConn.query(
       'DELETE FROM contact WHERE contact_id=?',
