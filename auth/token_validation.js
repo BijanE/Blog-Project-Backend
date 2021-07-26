@@ -9,7 +9,7 @@ module.exports = {
       jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
         if (err) {
           return res.json({
-            success: 0,
+            isAuth: false,
             message: 'Token is Invalid'
           })
         } else {
@@ -19,7 +19,7 @@ module.exports = {
       })
     } else {
       return res.json({
-        success: 0,
+        isAuth: false,
         message: 'Access Denied! Unauthorized User'
       })
     }

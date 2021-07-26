@@ -23,9 +23,10 @@ app.get('/', (req, res) => {
   res.send('This Backend Is Working...')
 })
 
+// define a api route
 app.get('/api', (req, res) => {
   res.json({
-    success: 1,
+    isAuth: true,
     massage: 'this app is working...'
   })
 })
@@ -52,8 +53,6 @@ app.use('/api/contact', ContactRouter)
 app.use('/api/blog', BlogRouter)
 
 app.use('/api/navbar', NavbarRouter)
-
-// app.use('/api/navbar', NavbarRouter)
 
 // listen for requests
 app.listen(PORT, () => {
