@@ -11,7 +11,7 @@ router.get('/', checkToken, getusers)
 // For update admins email or password *Only Admin
 router.patch('/', checkToken, updateUsers)
 
-// For Login
+// For Login *Only admins but no token needed
 router.post('/login', login)
 
 module.exports = router

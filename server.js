@@ -49,14 +49,20 @@ const NavbarRouter = require('./src/routes/navbar.routes')
 const SearchbarRouter = require('./src/routes/searchbar.routes')
 
 // using as middleware
+
+// User api
 app.use('/api/user', UserRouter)
 
+// Contact api
 app.use('/api/contact', ContactRouter)
 
+// Blog api
 app.use('/api/blog', BlogRouter)
 
+// Navbar and content in it api
 app.use('/api/navbar', NavbarRouter)
 
+// Searchbar api
 app.use('/api/searchbar', SearchbarRouter)
 
 // listen for requests
