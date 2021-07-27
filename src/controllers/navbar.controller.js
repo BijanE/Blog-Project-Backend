@@ -10,6 +10,7 @@ const {
 } = require('../models/navbar.model')
 
 module.exports = {
+  // For creating the navbar title
   create_navbar_title: (req, res) => {
     const body = req.body
     create_navbar_title(body, (err, results) => {
@@ -27,6 +28,7 @@ module.exports = {
     })
   },
 
+  // For creating the navbar content
   create_navbar_content: (req, res) => {
     const body = req.body
     create_navbar_content(body, (err, results) => {
@@ -44,6 +46,7 @@ module.exports = {
     })
   },
 
+  // For get all of the navbar titles
   get_all_navbar_title: (req, res) => {
     get_all_navbar_title((err, results) => {
       if (err) {
@@ -65,6 +68,7 @@ module.exports = {
     })
   },
 
+  // For get the navbar titles content by title content id
   get_navbar_title_content: (req, res) => {
     const body = req.body
     get_navbar_title_content(body, (err, results) => {
@@ -87,6 +91,7 @@ module.exports = {
     })
   },
 
+  // For updating the navbar titles
   update_navbar_title: (req, res) => {
     const body = req.body
     update_navbar_title(body, (err, results) => {
@@ -104,6 +109,7 @@ module.exports = {
     })
   },
 
+  // For updating the navbar titles content in it
   update_title_content: (req, res) => {
     const body = req.body
     update_title_content(body, (err, results) => {
@@ -121,6 +127,7 @@ module.exports = {
     })
   },
 
+  // For delete navbar titles
   delete_navbar_title: (req, res) => {
     const body = req.body
     delete_navbar_title(body, (err, results) => {
@@ -138,6 +145,7 @@ module.exports = {
     })
   },
 
+  // For delete navbar titles content in it
   delete_title_content: (req, res) => {
     const body = req.body
     delete_title_content(body, (err, results) => {

@@ -1,6 +1,7 @@
 const { get_searchbar } = require('../models/searchbar.model')
 
 module.exports = {
+  // For use the search bar * For commertial
   get_searchbar: (req, res) => {
     const body = req.body
     get_searchbar(body, (err, results) => {
