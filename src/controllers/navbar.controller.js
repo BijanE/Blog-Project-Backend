@@ -73,7 +73,7 @@ module.exports = {
           isAuth: false,
           massage: 'Cannot get the title content'
         })
-      } else if (!results) {
+      } else if (results == null) {
         return res.json({
           isAuth: false,
           massage: 'No title content found'
@@ -104,7 +104,22 @@ module.exports = {
     })
   },
 
-  update_title_content: (req, res) => {},
+  update_title_content: (req, res) => {
+    const body = req.body
+    update_title_content(body, (err, results) => {
+      if (err) {
+        return res.json({
+          isAuth: false,
+          massage: 'Cannot update title content'
+        })
+      } else {
+        return res.json({
+          isAuth: true,
+          massage: 'The title content is updated successfuly'
+        })
+      }
+    })
+  },
 
   delete_navbar_title: (req, res) => {
     const body = req.body
@@ -123,5 +138,20 @@ module.exports = {
     })
   },
 
-  delete_title_content: (req, res) => {}
+  delete_title_content: (req, res) => {
+    const body = req.body
+    delete_title_content(body, (err, results) => {
+      if (err) {
+        return res.json({
+          isAuth: false,
+          massage: 'Cannot delete title content'
+        })
+      } else {
+        return res.json({
+          isAuth: true,
+          massage: 'The title content is deleted successfuly'
+        })
+      }
+    })
+  }
 }

@@ -9,7 +9,7 @@ module.exports = {
           isAuth: false,
           massage: 'Cannot get the searchbar content'
         })
-      } else if (!results) {
+      } else if (results == null) {
         return res.json({
           isAuth: false,
           massage: 'Cannot found any searchbar content'
