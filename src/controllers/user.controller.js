@@ -120,7 +120,8 @@ module.exports = {
             path: '/',
             sameSite: 'strict',
             secure: true,
-            name: 'Session'
+            name: 'Session',
+            domain: 'https://dd-frontend-five.vercel.app/'
           })
           .sendStatus(200)
       } else {
