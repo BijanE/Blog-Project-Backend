@@ -26,7 +26,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://dd-frontend-five.vercel.app/admin')
+  res.header('Access-Control-Allow-Origin', 'https://dd-frontend-five.vercel.app')
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization'
