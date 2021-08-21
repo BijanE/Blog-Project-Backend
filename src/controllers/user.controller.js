@@ -122,8 +122,6 @@ module.exports = {
           signed: true
         })
 
-        res.send(req.signedCookies)
-
         res.status(200).json({
           isAuth: true,
           isLoggedIn: true,
