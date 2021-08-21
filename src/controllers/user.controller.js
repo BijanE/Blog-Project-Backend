@@ -114,7 +114,7 @@ module.exports = {
         )
 
         res.cookie('Access Token', jsontoken, {
-          maxAge: 3600,
+          maxAge: 3600 * 24 * 1000,
           httpOnly: true
         })
 
