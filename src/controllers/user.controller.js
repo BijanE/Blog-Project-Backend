@@ -120,7 +120,7 @@ module.exports = {
             path: '/',
             sameSite: 'strict',
             secure: true,
-            domain: '/'
+            name: 'Session'
           })
           .sendStatus(200)
       } else {
