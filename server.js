@@ -68,6 +68,8 @@ app.use('/api/navbar', NavbarRouter)
 // Searchbar api
 app.use('/api/searchbar', SearchbarRouter)
 
+app.use(cookieParser(config.cookiesKey))
+
 // listen for requests
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`)
