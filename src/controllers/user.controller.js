@@ -118,7 +118,7 @@ module.exports = {
             maxAge: 1000 * 60 * 60,
             httpOnly: true,
             secure: true,
-            SameSite: 'none'
+            SameSite: 'None'
           })
           .sendStatus(200)
       } else {
