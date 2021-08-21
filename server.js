@@ -14,10 +14,9 @@ const PORT = process.env.PORT || 8080
 app.use(cors({ origin: true, credentials: true }))
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization, XMLHttpRequest'
+    'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization'
   )
   res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH ,DELETE')
   res.header('Access-Control-Allow-Credentials', true)
