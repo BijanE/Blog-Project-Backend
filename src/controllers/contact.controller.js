@@ -6,12 +6,12 @@ module.exports = {
     const body = req.body
     create_contact(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot create a contact massage'
         })
       } else {
-        return res.json({
+        return res.status(201).json({
           isAuth: true,
           data: results
         })
@@ -23,17 +23,17 @@ module.exports = {
   get_contact: (req, res) => {
     get_contact((err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot get the contact massages'
         })
       } else if (!results) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'No contact massages found'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           data: results
         })
@@ -46,12 +46,12 @@ module.exports = {
     const body = req.body
     delete_contact(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot delete a contact massage'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           massage: 'Contact massage is deleted successfuly'
         })

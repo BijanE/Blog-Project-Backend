@@ -11,12 +11,12 @@ module.exports = {
           massage: 'Cannot get the searchbar content'
         })
       } else if (results == null) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot found any searchbar content'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           data: results
         })

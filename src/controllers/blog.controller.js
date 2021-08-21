@@ -14,13 +14,14 @@ module.exports = {
     const body = req.body
     create_blog(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot create a blog'
         })
       } else {
-        return res.json({
+        return res.status(201).json({
           isAuth: true,
+          massage: 'Blog başarıyla oluşturuldu',
           data: results
         })
       }
@@ -31,17 +32,17 @@ module.exports = {
   get_all_blog_main_menu: (req, res) => {
     get_all_blog_main_menu((err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot get the blogs'
         })
       } else if (!results) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'No blogs found'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           data: results
         })
@@ -54,12 +55,12 @@ module.exports = {
     const body = req.body
     delete_blog(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot delete the blog'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           massage: 'Blog is deleted successfuly'
         })
@@ -72,17 +73,17 @@ module.exports = {
     const body = req.body
     get_blog_content_by_id(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot get the blog'
         })
       } else if (!results) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'No blog found'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           data: results
         })
@@ -95,17 +96,17 @@ module.exports = {
     const body = req.body
     get_blog_by_catagory(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot get the blogs'
         })
       } else if (!results) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'No blogs found'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           data: results
         })
@@ -118,12 +119,12 @@ module.exports = {
     const body = req.body
     update_blog(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot update the blog'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           message: 'blog is updated successfully'
         })
@@ -136,17 +137,17 @@ module.exports = {
     const body = req.body
     get_by_pagenation(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'Cannot get the blogs'
         })
       } else if (!results) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
           massage: 'No blogs found'
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
           data: results
         })
