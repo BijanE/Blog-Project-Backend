@@ -117,10 +117,8 @@ module.exports = {
           .cookie('Access Token', jsontoken, {
             maxAge: 1000 * 60 * 60,
             httpOnly: true,
-            path: '/',
-            sameSite: 'strict',
-            name: 'Session',
-            domain: 'localhost'
+            domain: '/localhost',
+            path: '/admin'
           })
           .sendStatus(200)
       } else {
