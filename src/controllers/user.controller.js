@@ -116,9 +116,7 @@ module.exports = {
         res
           .cookie('Access Token', jsontoken, {
             maxAge: 1000 * 60 * 60,
-            httpOnly: true,
-            domain: '/',
-            path: '/'
+            httpOnly: true
           })
           .sendStatus(200)
       } else {
