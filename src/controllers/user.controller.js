@@ -118,8 +118,7 @@ module.exports = {
             maxAge: 1000 * 60 * 60,
             httpOnly: true,
             secure: true,
-            sameSite: 'none',
-            domain: 'dd-frontend-five.vercel.app'
+            sameSite: 'none'
           })
           .sendStatus(200)
       } else {
