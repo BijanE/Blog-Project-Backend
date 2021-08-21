@@ -11,7 +11,19 @@ require('dotenv').config()
 // Setup server port
 const PORT = process.env.PORT || 8080
 
-app.use(cors({ origin: true, credentials: true }))
+const corsOptions = {
+  //To allow requests from client
+  origin: [
+    'http://localhost:3000',
+    'http://127.0.0.1',
+    'https://dd-frontend-five.vercel.app',
+    'https://web-project-july-2021.herokuapp.com'
+  ],
+  credentials: true,
+  exposedHeaders: ['set-cookie']
+}
+
+app.use(cors(corsOptions))
 
 app.use(function (req, res, next) {
   res.header(
