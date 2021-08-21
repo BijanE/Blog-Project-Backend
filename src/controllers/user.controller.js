@@ -119,8 +119,8 @@ module.exports = {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            domain: 'dd-frontend-five.vercel.app',
-            path: '/admin'
+            domain: 'web-project-july-2021.herokuapp.com',
+            path: '/'
           })
           .sendStatus(200)
       } else {
