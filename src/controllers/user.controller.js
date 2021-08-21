@@ -114,10 +114,12 @@ module.exports = {
         )
 
         res.cookie('Access Token', jsontoken, {
-          maxAge: 3600 * 24 * 1000,
-          httpOnly: true
+          maxAge: 1000 * 60 * 60,
+          httpOnly: true,
+          path: '/',
+          sameSite: 'strict',
+          secure: true
         })
-
         res.status(200).json({
           isAuth: true,
           isLoggedIn: true,
