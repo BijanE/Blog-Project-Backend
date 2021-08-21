@@ -119,9 +119,8 @@ module.exports = {
             httpOnly: true,
             path: '/',
             sameSite: 'strict',
-            secure: true,
             name: 'Session',
-            domain: 'https://dd-frontend-five.vercel.app'
+            domain: 'localhost'
           })
           .sendStatus(200)
       } else {
