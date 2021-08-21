@@ -1,7 +1,6 @@
 const { create, getusers, updateUser, getUserByUserEmail } = require('../models/user.model')
 const { genSaltSync, hashSync, compareSync } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
-const cookieParser = require('cookie-parser')
 
 require('dotenv').config()
 
@@ -114,19 +113,16 @@ module.exports = {
             '5a656ce1f193e1aad3bbb98f5b39ce4bb2eacbab5eb6fcc04d52b42fbdc4802c9b19f4ccd8f4ecab797af3b8e9d9692e6aab83578618eefe8a9181a8dd00214b'
         )
 
-        res.cookie('Access Token', jsontoken, {
-          maxAge: 3600,
-          httpOnly: true
-        })
-
-        res.status(200).json({
-          isAuth: true,
-          isLoggedIn: true,
-          loginTime: dateTime,
-          userEmail: results.user_email,
-          userNameuserSurname: results.user_name + ' ' + results.user_surname,
-          token: jsontoken
-        })
+        res
+          .cookie('Access Token', jsontoken, {
+            maxAge: 1000 * 60 * 60,
+            httpOnly: true,
+            path: '/',
+            sameSite: 'strict',
+            secure: true,
+            domain: '/'
+          })
+          .sendStatus(200)
       } else {
         return res.status(400).json({
           isAuth: false,
