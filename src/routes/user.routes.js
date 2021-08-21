@@ -12,6 +12,6 @@ router.get('/', checkToken, getusers)
 router.patch('/', checkToken, updateUsers)
 
 // For Login *Only admins but no token needed
-router.post('/login', login)
+router.get('/login', login)
 
 module.exports = router

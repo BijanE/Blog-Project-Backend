@@ -1,7 +1,6 @@
 const { create, getusers, updateUser, getUserByUserEmail } = require('../models/user.model')
 const { genSaltSync, hashSync, compareSync } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
-const cookieParser = require('cookie-parser')
 
 require('dotenv').config()
 
