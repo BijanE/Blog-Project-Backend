@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 // Create express app
 const app = express()
@@ -11,6 +12,8 @@ require('dotenv').config()
 const PORT = process.env.PORT || 8080
 
 app.use(cors())
+
+app.use(cookieParser())
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
