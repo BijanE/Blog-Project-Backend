@@ -1,6 +1,7 @@
 const { create, getusers, updateUser, getUserByUserEmail } = require('../models/user.model')
 const { genSaltSync, hashSync, compareSync } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 
 require('dotenv').config()
 
@@ -117,6 +118,7 @@ module.exports = {
           maxAge: 3600,
           httpOnly: true
         })
+
         res.status(200).json({
           isAuth: true,
           isLoggedIn: true,
