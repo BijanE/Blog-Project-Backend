@@ -11,7 +11,7 @@ require('dotenv').config()
 // Setup server port
 const PORT = process.env.PORT || 8080
 
-app.use(cors({ origin: true, credentials: 'include' }))
+app.use(cors({ origin: true, credentials: true }))
 
 app.use(function (req, res, next) {
   res.header(
