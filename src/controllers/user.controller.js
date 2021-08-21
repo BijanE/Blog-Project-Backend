@@ -118,8 +118,7 @@ module.exports = {
           httpOnly: true,
           path: '/',
           sameSite: 'strict',
-          secure: true,
-          signed: true
+          secure: true
         })
 
         res.status(200).json({
