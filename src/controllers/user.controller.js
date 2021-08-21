@@ -119,8 +119,8 @@ module.exports = {
             httpOnly: true,
             path: '/',
             sameSite: 'strict',
-            secure: true,
-            domain: '/'
+            name: 'Session',
+            domain: 'localhost'
           })
           .sendStatus(200)
       } else {
