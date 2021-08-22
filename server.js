@@ -5,6 +5,14 @@ const cookieParser = require('cookie-parser')
 // Create express app
 const app = express()
 
+app.use(cookieParser())
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
+
+// parse requests of content-type - application/json
+app.use(express.json())
+
 // Import dotenv
 require('dotenv').config()
 
@@ -49,14 +57,6 @@ app.use(function (req, res, next) {
   next()
 })
 */
-
-app.use(cookieParser())
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }))
-
-// parse requests of content-type - application/json
-app.use(express.json())
 
 // define a root route
 app.get('/', (req, res) => {

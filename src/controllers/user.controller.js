@@ -114,9 +114,9 @@ module.exports = {
         )
 
         res
-          .cookie('Ottoman', '123456', {
+          .cookie('Yarra', '123456', {
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: false,
+            httpOnly: true,
             secure: true,
             sameSite: 'none',
             domain: 'web-project-july-2021.herokuapp.com',
