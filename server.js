@@ -19,7 +19,7 @@ const corsOptions = {
     'https://dd-frontend-five.vercel.app',
     'https://web-project-july-2021.herokuapp.com'
   ],
-  credentials: 'include',
+  credentials: true,
   withCredentials: true,
   exposedHeaders: ['set-cookie']
 }

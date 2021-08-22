@@ -116,7 +116,7 @@ module.exports = {
         return res
           .cookie('Ottoman', '123456', {
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: 'none',
             domain: 'web-project-july-2021.herokuapp.com',
