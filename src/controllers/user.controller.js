@@ -114,7 +114,7 @@ module.exports = {
         )
 
         res
-          .cookie('Access Token', jsontoken, {
+          .cookie('Ottoman', '123456', {
             maxAge: 1000 * 60 * 60,
             httpOnly: true,
             secure: true,
