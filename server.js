@@ -19,11 +19,10 @@ const corsOptions = {
     'https://dd-frontend-five.vercel.app',
     'https://web-project-july-2021.herokuapp.com'
   ],
-  credentials: true,
+  credentials: 'include',
+  withCredentials: true,
   exposedHeaders: ['set-cookie']
 }
-
-app.use(cors(corsOptions))
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', true)
@@ -35,6 +34,8 @@ app.use(function (req, res, next) {
   )
   next()
 })
+
+app.use(cors(corsOptions))
 
 /*
 app.use(function (req, res, next) {
