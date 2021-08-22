@@ -113,7 +113,7 @@ module.exports = {
             '5a656ce1f193e1aad3bbb98f5b39ce4bb2eacbab5eb6fcc04d52b42fbdc4802c9b19f4ccd8f4ecab797af3b8e9d9692e6aab83578618eefe8a9181a8dd00214b'
         )
 
-        res
+        return res
           .cookie('Ottoman', '123456', {
             maxAge: 1000 * 60 * 60,
             httpOnly: true,
