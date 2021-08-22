@@ -129,7 +129,6 @@ module.exports = {
           // yes, cookie was already present
           console.log('cookie exists', cookie)
         }
-        next()
       } else {
         return res.status(400).json({
           isAuth: false,
