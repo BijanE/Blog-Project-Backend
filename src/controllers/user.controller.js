@@ -117,10 +117,10 @@ module.exports = {
           .cookie('Access Token', jsontoken, {
             maxAge: 1000 * 60 * 60,
             httpOnly: true,
-            path: '/',
-            sameSite: 'strict',
-            name: 'Session',
-            domain: 'localhost'
+            secure: true,
+            sameSite: 'none',
+            domain: 'web-project-july-2021.herokuapp.com',
+            path: '/'
           })
           .sendStatus(200)
       } else {

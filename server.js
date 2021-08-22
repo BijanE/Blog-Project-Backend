@@ -11,9 +11,34 @@ require('dotenv').config()
 // Setup server port
 const PORT = process.env.PORT || 8080
 
-app.use(cors({ origin: true, credentials: true }))
+const corsOptions = {
+  //To allow requests from client
+  origin: [
+    'http://localhost:3000',
+    'http://127.0.0.1',
+    'https://dd-frontend-five.vercel.app',
+    'https://web-project-july-2021.herokuapp.com'
+  ],
+  credentials: true,
+  exposedHeaders: ['set-cookie']
+}
+
+app.use(cors(corsOptions))
 
 app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Credentials', true)
+  res.header('Access-Control-Allow-Origin', req.headers.origin)
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
+  )
+  next()
+})
+
+/*
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://dd-frontend-five.vercel.app')
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization'
@@ -22,6 +47,7 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', true)
   next()
 })
+*/
 
 app.use(cookieParser())
 
