@@ -6,18 +6,24 @@ module.exports = {
     const body = req.body
     get_searchbar(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot get the searchbar content'
+          massage: 'Cannot get the searchbar content',
+          error: err,
+          data: null
         })
       } else if (results == null) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot found any searchbar content'
+          massage: 'Cannot found any searchbar content',
+          error: err,
+          data: null
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'The searchbar is working',
           data: results
         })
       }

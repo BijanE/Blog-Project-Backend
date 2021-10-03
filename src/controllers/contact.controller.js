@@ -6,13 +6,17 @@ module.exports = {
     const body = req.body
     create_contact(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot create a contact massage'
+          error: err,
+          massage: 'Cannot create a contact massage',
+          data: null
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'Contact has been created successfuly',
           data: results
         })
       }
@@ -23,18 +27,24 @@ module.exports = {
   get_contact: (req, res) => {
     get_contact((err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot get the contact massages'
+          error: err,
+          massage: 'Cannot get the contact massages',
+          data: null
         })
       } else if (!results) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
-          massage: 'No contact massages found'
+          error: err,
+          massage: 'No contact massages found',
+          data: null
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'the contact massages got successfuly',
           data: results
         })
       }
@@ -46,14 +56,18 @@ module.exports = {
     const body = req.body
     delete_contact(body, (err, results) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot delete a contact massage'
+          error: err,
+          massage: 'Cannot delete a contact massage',
+          data: null
         })
       } else {
-        return res.json({
+        return res.status(200).json({
           isAuth: true,
-          massage: 'Contact massage is deleted successfuly'
+          error: null,
+          massage: 'Contact massage is deleted successfuly',
+          data: results
         })
       }
     })
