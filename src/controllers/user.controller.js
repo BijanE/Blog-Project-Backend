@@ -19,7 +19,7 @@ module.exports = {
           data: null
         })
       } else {
-        return res.status(200).json({
+        return res.status(201).json({
           isAuth: true,
           massage: 'The user has been created successfuly',
           error: null,

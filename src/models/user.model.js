@@ -18,13 +18,17 @@ module.exports = {
 
   // GET USER INFO
   getusers: (callback) => {
-    dbConn.query('SELECT user_name,user_surname FROM user', [], (error, results, fields) => {
-      if (error) {
-        return callback(error)
-      } else {
-        return callback(null, results)
+    dbConn.query(
+      'SELECT user_name, user_surname, user_email FROM user',
+      [],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error)
+        } else {
+          return callback(null, results)
+        }
       }
-    })
+    )
   },
 
   // UPDATE USER INFO BY NAME

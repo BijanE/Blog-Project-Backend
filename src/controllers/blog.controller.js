@@ -21,10 +21,9 @@ module.exports = {
           data: null
         })
       } else {
-        return res.status(200).json({
+        return res.status(201).json({
           isAuth: true,
-          error: null,
-          massage: 'Blog has been created successfuly',
+          massage: 'Blog başarıyla oluşturuldu',
           data: results
         })
       }
