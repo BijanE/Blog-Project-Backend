@@ -21,7 +21,8 @@ module.exports = {
       } else {
         return res.status(201).json({
           isAuth: true,
-          massage: 'Başarıyla oluşturuldu',
+          massage: 'The user has been created successfuly',
+          error: null,
           data: results
         })
       }
@@ -48,6 +49,8 @@ module.exports = {
       } else {
         return res.status(200).json({
           isAuth: true,
+          massage: 'The users infos got successfuly',
+          error: null,
           data: results
         })
       }
@@ -70,7 +73,9 @@ module.exports = {
       } else {
         return res.status(200).json({
           isAuth: true,
-          message: 'user updated successfully'
+          message: 'user updated successfully',
+          error: null,
+          data: results
         })
       }
     })
@@ -110,25 +115,19 @@ module.exports = {
         const jsontoken = sign(
           { result: results },
           process.env.JWT_KEY ||
-            '5a656ce1f193e1aad3bbb98f5b39ce4bb2eacbab5eb6fcc04d52b42fbdc4802c9b19f4ccd8f4ecab797af3b8e9d9692e6aab83578618eefe8a9181a8dd00214b'
+            '5a656ce1f193e1aad3bbb98f5b39ce4bb2eacbab5eb6fcc04d52b42fbdc4802c9b19f4ccd8f4ecab797af3b8e9d9692e6aab83578618eefe8a9181a8dd00214b',
+          {
+            expiresIn: '1h'
+          }
         )
-        var cookie = req.cookies.cookieName
-        if (cookie === undefined) {
-          res
-            .cookie('Yarra', '123456', {
-              maxAge: 1000 * 60 * 60 * 24,
-              httpOnly: true,
-              secure: true,
-              sameSite: 'none',
-              domain: 'web-project-july-2021.herokuapp.com',
-              path: '/'
-            })
-            .sendStatus(200)
-          console.log('cookie created successfully')
-        } else {
-          // yes, cookie was already present
-          console.log('cookie exists', cookie)
-        }
+        return res.status(200).json({
+          isAuth: true,
+          isLoggedIn: true,
+          loginTime: dateTime,
+          userEmail: results.user_email,
+          userNameuserSurname: results.user_name + ' ' + results.user_surname,
+          token: jsontoken
+        })
       } else {
         return res.status(400).json({
           isAuth: false,

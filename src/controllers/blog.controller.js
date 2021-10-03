@@ -16,7 +16,9 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot create a blog'
+          error: err,
+          massage: 'Cannot create a blog',
+          data: null
         })
       } else {
         return res.status(201).json({
@@ -34,16 +36,22 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot get the blogs'
+          error: err,
+          massage: 'Cannot get the blogs',
+          data: null
         })
       } else if (!results) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'No blogs found'
+          error: err,
+          massage: 'No blogs found',
+          data: null
         })
       } else {
         return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'Landing page blogs got successfuly',
           data: results
         })
       }
@@ -57,12 +65,16 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot delete the blog'
+          error: err,
+          massage: 'Cannot delete the blog',
+          data: null
         })
       } else {
         return res.status(200).json({
           isAuth: true,
-          massage: 'Blog is deleted successfuly'
+          error: null,
+          massage: 'Blog is deleted successfuly',
+          data: results
         })
       }
     })
@@ -75,16 +87,22 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot get the blog'
+          error: err,
+          massage: 'Cannot get the blog',
+          data: null
         })
       } else if (!results) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'No blog found'
+          error: err,
+          massage: 'No blog found',
+          data: null
         })
       } else {
         return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'Successfuly operation compeleted',
           data: results
         })
       }
@@ -98,16 +116,22 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot get the blogs'
+          error: err,
+          massage: 'Cannot get the blogs',
+          data: null
         })
       } else if (!results) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'No blogs found'
+          error: err,
+          massage: 'No blogs found',
+          data: null
         })
       } else {
         return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'Succesful',
           data: results
         })
       }
@@ -121,12 +145,16 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot update the blog'
+          error: err,
+          massage: 'Cannot update the blog',
+          data: null
         })
       } else {
         return res.status(200).json({
           isAuth: true,
-          message: 'blog is updated successfully'
+          error: null,
+          message: 'blog is updated successfully',
+          data: results
         })
       }
     })
@@ -139,16 +167,22 @@ module.exports = {
       if (err) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'Cannot get the blogs'
+          error: err,
+          massage: 'Cannot get the blogs',
+          data: null
         })
       } else if (!results) {
         return res.status(400).json({
           isAuth: false,
-          massage: 'No blogs found'
+          error: err,
+          massage: 'No blogs found',
+          data: null
         })
       } else {
         return res.status(200).json({
           isAuth: true,
+          error: null,
+          massage: 'Succesful',
           data: results
         })
       }
