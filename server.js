@@ -5,6 +5,14 @@ const cookieParser = require('cookie-parser')
 // Create express app
 const app = express()
 
+app.use(cookieParser())
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
+
+// parse requests of content-type - application/json
+app.use(express.json())
+
 // Import dotenv
 require('dotenv').config()
 
@@ -20,10 +28,9 @@ const corsOptions = {
     'https://web-project-july-2021.herokuapp.com'
   ],
   credentials: true,
+  withCredentials: true,
   exposedHeaders: ['set-cookie']
 }
-
-app.use(cors(corsOptions))
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', true)
@@ -35,6 +42,8 @@ app.use(function (req, res, next) {
   )
   next()
 })
+
+app.use(cors(corsOptions))
 
 /*
 app.use(function (req, res, next) {
@@ -48,14 +57,6 @@ app.use(function (req, res, next) {
   next()
 })
 */
-
-app.use(cookieParser())
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }))
-
-// parse requests of content-type - application/json
-app.use(express.json())
 
 // define a root route
 app.get('/', (req, res) => {

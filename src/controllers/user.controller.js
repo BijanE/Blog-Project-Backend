@@ -112,17 +112,23 @@ module.exports = {
           process.env.JWT_KEY ||
             '5a656ce1f193e1aad3bbb98f5b39ce4bb2eacbab5eb6fcc04d52b42fbdc4802c9b19f4ccd8f4ecab797af3b8e9d9692e6aab83578618eefe8a9181a8dd00214b'
         )
-
-        res
-          .cookie('Access Token', jsontoken, {
-            maxAge: 1000 * 60 * 60,
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            domain: 'web-project-july-2021.herokuapp.com',
-            path: '/'
-          })
-          .sendStatus(200)
+        var cookie = req.cookies.cookieName
+        if (cookie === undefined) {
+          res
+            .cookie('Yarra', '123456', {
+              maxAge: 1000 * 60 * 60 * 24,
+              httpOnly: true,
+              secure: true,
+              sameSite: 'none',
+              domain: 'web-project-july-2021.herokuapp.com',
+              path: '/'
+            })
+            .sendStatus(200)
+          console.log('cookie created successfully')
+        } else {
+          // yes, cookie was already present
+          console.log('cookie exists', cookie)
+        }
       } else {
         return res.status(400).json({
           isAuth: false,
