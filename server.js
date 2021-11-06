@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const FormData = require('form-data')
+const fs = require('fs')
 
 // Create express app
 const app = express()
@@ -44,19 +46,6 @@ app.use(function (req, res, next) {
 })
 
 app.use(cors(corsOptions))
-
-/*
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://dd-frontend-five.vercel.app')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization'
-  )
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH ,DELETE')
-  res.header('Access-Control-Allow-Credentials', true)
-  next()
-})
-*/
 
 // define a root route
 app.get('/', (req, res) => {
