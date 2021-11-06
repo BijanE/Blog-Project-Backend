@@ -1,12 +1,13 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-const FormData = require('form-data')
-const fs = require('fs')
 
 // Create express app
 const app = express()
 
+app.use('/photos', express.static('photos'))
+
+// use cookie parser
 app.use(cookieParser())
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -45,6 +46,7 @@ app.use(function (req, res, next) {
   next()
 })
 
+// Cors options
 app.use(cors(corsOptions))
 
 // define a root route

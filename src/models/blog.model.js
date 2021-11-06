@@ -2,7 +2,7 @@ const dbConn = require('../../config/db.config')
 
 module.exports = {
   // For creating a blog by admin
-  create_blog: (data, callback) => {
+  create_blog: (data, images, callback) => {
     dbConn.query(
       'INSERT INTO blog (blog_title, blog_slug, blog_summary, blog_catagory, blog_content, blog_photo) VALUES (?,?,?,?,?,?)',
       [
@@ -11,7 +11,7 @@ module.exports = {
         data.blog_summary,
         data.blog_catagory,
         data.blog_content,
-        data.blog_photo
+        'https://web-project-july-2021.herokuapp.com/' + images
       ],
       (error, results, fields) => {
         if (error) {
@@ -69,7 +69,7 @@ module.exports = {
   },
 
   // For updating a blog with its blog id
-  update_blog: (data, callback) => {
+  update_blog: (data, images, callback) => {
     dbConn.query(
       'UPDATE blog set blog_title=?, blog_slug=?, blog_catagory=?, blog_summary=?,blog_content=?, blog_photo WHERE blog_id=?',
       [
@@ -78,7 +78,7 @@ module.exports = {
         data.blog_catagory,
         data.blog_summary,
         data.blog_content,
-        data.blog_photo,
+        'https://web-project-july-2021.herokuapp.com/' + images,
         data.blog_id
       ],
       (error, results, fields) => {

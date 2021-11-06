@@ -12,13 +12,13 @@ module.exports = {
   // For creating a blog
   create_blog: (req, res) => {
     const body = req.body
-    create_blog(body, (err, results) => {
+    const images = req.file.path
+    create_blog(body, images, (err, results) => {
       if (err) {
         return res.status(400).json({
           isAuth: false,
           error: err,
-          massage: 'Cannot create a blog',
-          data: null
+          massage: 'Cannot create a blog'
         })
       } else {
         return res.status(201).json({
@@ -141,7 +141,8 @@ module.exports = {
   // For updating a blog and its content
   update_blog: (req, res) => {
     const body = req.body
-    update_blog(body, (err, results) => {
+    const images = req.file.path
+    update_blog(body, images, (err, results) => {
       if (err) {
         return res.status(400).json({
           isAuth: false,

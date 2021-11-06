@@ -10,8 +10,42 @@ const {
 const router = require('express').Router()
 const { checkToken } = require('../../auth/token_validation')
 
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './photos')
+  },
+  filename: function (req, file, cb) {
+    const mimeExtension = {
+      'image/jpeg': '.jpeg',
+      'image/jpg': '.jpg',
+      'image/png': '.png',
+      'image/gif': '.gif'
+    }
+    cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype])
+  }
+})
+
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype === 'image/jpeg' ||
+      file.mimetype === 'image/jpg' ||
+      file.mimetype === 'image/png' ||
+      file.mimetype === 'image/gif'
+    ) {
+      cb(null, true)
+    } else {
+      cb(null, false)
+      req.fileError = 'File format is not valid'
+    }
+  }
+})
+
 // For create new blog *Only Admin
-router.post('/', checkToken, create_blog)
+router.post('/', upload.single('blog_photo'), checkToken, create_blog)
 
 // For main menu blog show
 router.get('/main_menu', get_all_blog_main_menu)
