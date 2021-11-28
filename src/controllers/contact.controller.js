@@ -1,4 +1,9 @@
-const { create_contact, get_contact, delete_contact } = require('../models/contact.model')
+const {
+  create_contact,
+  get_contact,
+  delete_contact,
+  sendEmail
+} = require('../models/contact.model')
 
 module.exports = {
   // For sending or creating contact with them
@@ -67,6 +72,28 @@ module.exports = {
           isAuth: true,
           error: null,
           massage: 'Contact massage is deleted successfuly',
+          data: results
+        })
+      }
+    })
+  },
+
+  //For sending emails
+  sendEmail: (req, res) => {
+    const body = req.body
+    sendEmail(body, (err, results) => {
+      if (err) {
+        return res.status(400).json({
+          isAuth: false,
+          error: err,
+          massage: 'Cannot send a email',
+          data: null
+        })
+      } else {
+        return res.status(201).json({
+          isAuth: true,
+          error: null,
+          massage: 'Email has been sent successfuly',
           data: results
         })
       }

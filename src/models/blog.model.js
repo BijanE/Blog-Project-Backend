@@ -38,11 +38,11 @@ module.exports = {
     )
   },
 
-  // For get blog that belongs to a catagory by catagory *Language
-  get_blog_by_catagory: (data, callback) => {
+  // For getting blogs for navbar order by id
+  get_blog_navbar: (callback) => {
     dbConn.query(
-      'SELECT blog_id ,blog_title, blog_slug, blog_summary, blog_photo FROM blog WHERE blog_catagory=?',
-      [data.blog_catagory],
+      'SELECT blog_id, blog_title, blog_slug FROM blog ORDER BY blog_id DESC',
+      [],
       (error, results, fields) => {
         if (error) {
           return callback(error)
@@ -100,22 +100,5 @@ module.exports = {
         return callback(null, results)
       }
     })
-  },
-
-  // For getting blog infos with pagenation for landing page
-  get_by_pagenation: (data, callback) => {
-    const page_number = (data.page_number - 1) * 10
-    dbConn.query(
-      'SELECT blog_id, blog_title, blog_slug, blog_summary, blog_catagory, blog_photo FROM blog ORDER BY blog_id DESC LIMIT 10 OFFSET ' +
-        page_number,
-      [],
-      (error, results, fields) => {
-        if (error) {
-          return callback(error)
-        } else {
-          return callback(null, results)
-        }
-      }
-    )
   }
 }

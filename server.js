@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-const path = require('path')
 
 // Create express app
 const app = express()
@@ -74,11 +73,14 @@ const ContactRouter = require('./src/routes/contact.routes')
 // Blog Rout
 const BlogRouter = require('./src/routes/blog.routes')
 
-// Navbar Rout
-const NavbarRouter = require('./src/routes/navbar.routes')
-
 // Searchbar Rout
 const SearchbarRouter = require('./src/routes/searchbar.routes')
+
+// Hizmetler Router
+const Hizmetler = require('./src/routes/hizmetler.routes')
+
+// Servisler Router
+const Sektorler = require('./src/routes/sektorler.routes')
 
 // using as middleware
 
@@ -91,11 +93,12 @@ app.use('/api/contact', ContactRouter)
 // Blog api
 app.use('/api/blog', BlogRouter)
 
-// Navbar and content in it api
-app.use('/api/navbar', NavbarRouter)
-
 // Searchbar api
 app.use('/api/searchbar', SearchbarRouter)
+
+app.use('/api/hizmetler', Hizmetler)
+
+app.use('/api/sektorler', Sektorler)
 
 // listen for requests
 app.listen(PORT, () => {

@@ -1,11 +1,10 @@
 const {
   create_blog,
   get_all_blog_main_menu,
-  get_blog_by_catagory,
   get_blog_content_by_id,
   update_blog,
   delete_blog,
-  get_by_pagenation
+  get_blog_navbar
 } = require('../models/blog.model')
 
 module.exports = {
@@ -52,6 +51,34 @@ module.exports = {
           isAuth: true,
           error: null,
           massage: 'Landing page blogs got successfuly',
+          data: results
+        })
+      }
+    })
+  },
+
+  //For getting blog info for navbar
+  get_blog_navbar: (req, res) => {
+    get_blog_navbar((err, results) => {
+      if (err) {
+        return res.status(400).json({
+          isAuth: false,
+          error: err,
+          massage: 'Cannot get the blogs',
+          data: null
+        })
+      } else if (!results) {
+        return res.status(400).json({
+          isAuth: false,
+          error: err,
+          massage: 'No blogs found',
+          data: null
+        })
+      } else {
+        return res.status(200).json({
+          isAuth: true,
+          error: null,
+          massage: 'navbar blogs got successfuly',
           data: results
         })
       }
@@ -109,35 +136,6 @@ module.exports = {
     })
   },
 
-  // For get the blogs that belongs to a catagory
-  get_blog_by_catagory: (req, res) => {
-    const body = req.body
-    get_blog_by_catagory(body, (err, results) => {
-      if (err) {
-        return res.status(400).json({
-          isAuth: false,
-          error: err,
-          massage: 'Cannot get the blogs',
-          data: null
-        })
-      } else if (!results) {
-        return res.status(400).json({
-          isAuth: false,
-          error: err,
-          massage: 'No blogs found',
-          data: null
-        })
-      } else {
-        return res.status(200).json({
-          isAuth: true,
-          error: null,
-          massage: 'Succesful',
-          data: results
-        })
-      }
-    })
-  },
-
   // For updating a blog and its content
   update_blog: (req, res) => {
     const body = req.body
@@ -155,35 +153,6 @@ module.exports = {
           isAuth: true,
           error: null,
           message: 'blog is updated successfully',
-          data: results
-        })
-      }
-    })
-  },
-
-  // For pagenationing the blogs
-  get_by_pagenation: (req, res) => {
-    const body = req.body
-    get_by_pagenation(body, (err, results) => {
-      if (err) {
-        return res.status(400).json({
-          isAuth: false,
-          error: err,
-          massage: 'Cannot get the blogs',
-          data: null
-        })
-      } else if (!results) {
-        return res.status(400).json({
-          isAuth: false,
-          error: err,
-          massage: 'No blogs found',
-          data: null
-        })
-      } else {
-        return res.status(200).json({
-          isAuth: true,
-          error: null,
-          massage: 'Succesful',
           data: results
         })
       }

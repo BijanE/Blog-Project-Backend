@@ -1,11 +1,11 @@
 const {
-  create_blog,
-  get_all_blog_main_menu,
-  get_blog_content_by_id,
-  update_blog,
-  delete_blog,
-  get_blog_navbar
-} = require('../controllers/blog.controller')
+  create_hizmet,
+  get_all_hizmet_for_landing_page,
+  get_hizmet_content_by_id,
+  update_hizmet,
+  delete_hizmet,
+  get_hizmet_for_navbar
+} = require('../controllers/hizmetler.controller.js')
 const router = require('express').Router()
 const { checkToken } = require('../../auth/token_validation')
 
@@ -43,22 +43,22 @@ const upload = multer({
   }
 })
 
-// For create new blog *Only Admin
-router.post('/', upload.single('blog_photo'), checkToken, create_blog)
+// For create new hizmet *Only Admin
+router.post('/', upload.single('hizmet_photo'), checkToken, create_hizmet)
 
-// For main menu blog show
-router.get('/main_menu', get_all_blog_main_menu)
+// For main menu hizmet show
+router.get('/main_menu', get_all_hizmet_for_landing_page)
 
-// For getting blog content
-router.get('/content', get_blog_content_by_id)
+// For getting hizmet content
+router.get('/content', get_hizmet_content_by_id)
 
-// For updating blog *Only Admin
-router.patch('/', upload.single('blog_photo'), checkToken, update_blog)
+// For updating hizmet *Only Admin
+router.patch('/', upload.single('hizmet_photo'), checkToken, update_hizmet)
 
-// For deleting a blog *Only Admin
-router.delete('/', checkToken, delete_blog)
+// For deleting a hizmet *Only Admin
+router.delete('/', checkToken, delete_hizmet)
 
-// For getting blogs navbar content
-router.get('/navbar', get_blog_navbar)
+// For getting hizmetler navbar
+router.get('/navbar', get_hizmet_for_navbar)
 
 module.exports = router

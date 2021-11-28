@@ -1,11 +1,11 @@
 const {
-  create_blog,
-  get_all_blog_main_menu,
-  get_blog_content_by_id,
-  update_blog,
-  delete_blog,
-  get_blog_navbar
-} = require('../controllers/blog.controller')
+  create_sektor,
+  get_all_sektor_for_landing_page,
+  get_sektor_content_by_id,
+  update_sektor,
+  delete_sektor,
+  get_sektor_for_navbar
+} = require('../controllers/sektorler.controller.js')
 const router = require('express').Router()
 const { checkToken } = require('../../auth/token_validation')
 
@@ -43,22 +43,22 @@ const upload = multer({
   }
 })
 
-// For create new blog *Only Admin
-router.post('/', upload.single('blog_photo'), checkToken, create_blog)
+// For create new sektor *Only Admin
+router.post('/', upload.single('sektorler_photo'), checkToken, create_sektor)
 
-// For main menu blog show
-router.get('/main_menu', get_all_blog_main_menu)
+// For main menu sektor show
+router.get('/main_menu', get_all_sektor_for_landing_page)
 
-// For getting blog content
-router.get('/content', get_blog_content_by_id)
+// For getting sektor content
+router.get('/content', get_sektor_content_by_id)
 
-// For updating blog *Only Admin
-router.patch('/', upload.single('blog_photo'), checkToken, update_blog)
+// For updating sektor *Only Admin
+router.patch('/', upload.single('sektorler_photo'), checkToken, update_sektor)
 
-// For deleting a blog *Only Admin
-router.delete('/', checkToken, delete_blog)
+// For deleting a sektor *Only Admin
+router.delete('/', checkToken, delete_sektor)
 
-// For getting blogs navbar content
-router.get('/navbar', get_blog_navbar)
+// For getting sektorler navbar
+router.get('/navbar', get_sektor_for_navbar)
 
 module.exports = router
