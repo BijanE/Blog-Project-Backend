@@ -71,7 +71,7 @@ module.exports = {
   // For updating a blog with its blog id
   update_blog: (data, images, callback) => {
     dbConn.query(
-      'UPDATE blog set blog_title=?, blog_slug=?, blog_catagory=?, blog_summary=?,blog_content=?, blog_photo WHERE blog_id=?',
+      'UPDATE blog set blog_title=?, blog_slug=?, blog_catagory=?, blog_summary=?,blog_content=?, blog_photo=? WHERE blog_id=?',
       [
         data.blog_title,
         data.blog_slug,

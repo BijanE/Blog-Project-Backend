@@ -70,7 +70,7 @@ module.exports = {
   // For updating a hizmet with its hizmet id
   update_hizmet: (data, images, callback) => {
     dbConn.query(
-      'UPDATE hizmet set hizmet_title=?, hizmet_slug=?, hizmet_summary=?,hizmet_content=?, hizmet_photo WHERE hizmet_id=?',
+      'UPDATE hizmet set hizmet_title=?, hizmet_slug=?, hizmet_summary=?,hizmet_content=?, hizmet_photo=? WHERE hizmet_id=?',
       [
         data.hizmet_title,
         data.hizmet_slug,

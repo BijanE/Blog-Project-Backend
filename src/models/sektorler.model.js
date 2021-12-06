@@ -70,7 +70,7 @@ module.exports = {
   // For updating a sektor with its sektor id
   update_sektor: (data, images, callback) => {
     dbConn.query(
-      'UPDATE sektorler set sektorler_title=?, sektorler_slug=?, sektorler_summary=?,sektorler_content=?, sektorler_photo WHERE sektorler_id=?',
+      'UPDATE sektorler set sektorler_title=?, sektorler_slug=?, sektorler_summary=?,sektorler_content=?, sektorler_photo=? WHERE sektorler_id=?',
       [
         data.sektorler_title,
         data.sektorler_slug,
