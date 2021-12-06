@@ -55,7 +55,7 @@ module.exports = {
   // For get sektor content by sektor id
   get_sektor_content_by_id: (data, callback) => {
     dbConn.query(
-      'SELECT sektorler_title, sektorler_slug, sektorler_content, sektorler_photo FROM hizmetler WHERE sektorler_id=?',
+      'SELECT sektorler_title, sektorler_slug, sektorler_content, sektorler_photo FROM sektorler WHERE sektorler_id=?',
       [data.sektorler_id],
       (error, results, fields) => {
         if (error) {
