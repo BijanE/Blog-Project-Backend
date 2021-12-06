@@ -10,7 +10,18 @@ module.exports = {
       from: 'bijanetessam@gmail.com' || process.env.emailAdress,
       to: 'bijanetessam@gmail.com' || process.env.emailAdress,
       subject: data.subject,
-      text: data.text
+      text:
+        'Gönderen Email: ' +
+        data.senderEmail +
+        '\n' +
+        'Gönderen Ad ve Soyadı: ' +
+        data.senderNamesurname +
+        '\n' +
+        'Gönderen Şirket Adı: ' +
+        data.sirket +
+        '\n' +
+        'İçerik: ' +
+        data.text
     }
 
     transporter.sendMail(options, (error, results, fields) => {

@@ -25,7 +25,7 @@ module.exports = {
   // For getting hizmet infos for navbar order by id
   get_hizmet_for_navbar: (callback) => {
     dbConn.query(
-      'SELECT hizmet_id, hizmet_title, hizmet_slug FROM hizmetler ORDER BY hizmet_id DESC',
+      'SELECT hizmet_id, hizmet_title, hizmet_slug FROM hizmetler ORDER BY hizmet_id DESC limit 5',
       [],
       (error, results, fields) => {
         if (error) {

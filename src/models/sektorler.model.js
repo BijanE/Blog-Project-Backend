@@ -25,7 +25,7 @@ module.exports = {
   // For getting sektorler infos for navbar order by id
   get_sektor_for_navbar: (callback) => {
     dbConn.query(
-      'SELECT sektorler_id, sektorler_title, sektorler_slug FROM sektorler ORDER BY sektorler_id DESC',
+      'SELECT sektorler_id, sektorler_title, sektorler_slug FROM sektorler ORDER BY sektorler_id DESC limit 5',
       [],
       (error, results, fields) => {
         if (error) {

@@ -41,7 +41,7 @@ module.exports = {
   // For getting blogs for navbar order by id
   get_blog_navbar: (callback) => {
     dbConn.query(
-      'SELECT blog_id, blog_title, blog_slug FROM blog ORDER BY blog_id DESC',
+      'SELECT blog_id, blog_title, blog_slug FROM blog ORDER BY blog_id DESC limit 5',
       [],
       (error, results, fields) => {
         if (error) {
