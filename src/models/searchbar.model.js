@@ -3,13 +3,13 @@ const dbConn = require('../../config/db.config')
 module.exports = {
   get_searchbar: (data, callback) => {
     dbConn.query(
-      'Select * from hizmetler where hizmet_title LIKE "%' +
+      'Select blog_id,blog_title,blog_slug from blog where blog_title LIKE "%' +
         data.search +
-        '%" union Select * from blog where blog_title LIKE "%' +
+        '%" union select hizmet_id, hizmet_title,hizmet_slug from hizmetler WHERE hizmet_title LIKE "%' +
         data.search +
-        '%" union Select * from sektorler where sektorler_title LIKE "%' +
+        '%" union select sektorler_id, sektorler_title,sektorler_slug from sektorler WHERE sektorler_title LIKE "%' +
         data.search +
-        '%"',
+        '%";',
       [],
       (error, results, fields) => {
         if (error) {
